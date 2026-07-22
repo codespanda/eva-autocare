@@ -15,6 +15,7 @@ import { Reviews } from "@/pages/Reviews";
 import { Settings } from "@/pages/Settings";
 import { SignIn } from "@/pages/SignIn";
 import { SignUp } from "@/pages/SignUp";
+import { Showcase } from "@/pages/Showcase";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Routes>
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/showcase" element={<Showcase />} />
           <Route element={<DashboardLayout />}>
             <Route path="/" element={<Dashboard />} />
             <Route path="/appointments" element={<Appointments />} />
