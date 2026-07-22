@@ -17,7 +17,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useTheme } from "@/lib/theme";
 
-const LIVE_URL = "https://codespanda.github.io/eva-autocare/";
+const LIVE_URL = "https://eva-autocare.codespanda.com/";
 const REPO_URL = "https://github.com/codespanda/eva-autocare";
 
 const OVERVIEW_FEATURES = [

@@ -36,7 +36,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-const LIVE_URL = "https://codespanda.github.io/eva-autocare/";
+const LIVE_URL = "https://eva-autocare.codespanda.com/";
 const REPO_URL = "https://github.com/codespanda/eva-autocare";
 
 const WHO_FOR = [
@@ -193,7 +193,7 @@ export function Showcase() {
               </Link>
             </Button>
           </div>
-          <p className="mt-3 text-sm text-muted-foreground">codespanda.github.io/eva-autocare</p>
+          <p className="mt-3 text-sm text-muted-foreground">eva-autocare.codespanda.com</p>
         </section>
 
         {/* What is it */}
