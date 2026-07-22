@@ -187,10 +187,10 @@ export function Showcase() {
               </a>
             </Button>
             <Button asChild size="lg" variant="outline" className="gap-2">
-              <a href={`${REPO_URL}#readme`} target="_blank" rel="noreferrer">
+              <Link to="/docs">
                 <BookOpen className="h-4 w-4" />
                 Documentation
-              </a>
+              </Link>
             </Button>
           </div>
           <p className="mt-3 text-sm text-muted-foreground">codespanda.github.io/eva-autocare</p>
@@ -344,9 +344,7 @@ export function Showcase() {
           </div>
           <div className="mt-6">
             <Button asChild variant="outline">
-              <a href={`${REPO_URL}#readme`} target="_blank" rel="noreferrer">
-                View Documentation
-              </a>
+              <Link to="/docs">View Documentation</Link>
             </Button>
           </div>
         </section>

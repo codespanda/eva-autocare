@@ -16,6 +16,7 @@ import { Settings } from "@/pages/Settings";
 import { SignIn } from "@/pages/SignIn";
 import { SignUp } from "@/pages/SignUp";
 import { Showcase } from "@/pages/Showcase";
+import { Docs } from "@/pages/Docs";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/showcase" element={<Showcase />} />
+          <Route path="/docs" element={<Docs />} />
           <Route element={<DashboardLayout />}>
             <Route path="/" element={<Dashboard />} />
             <Route path="/appointments" element={<Appointments />} />
