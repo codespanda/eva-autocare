@@ -14,28 +14,15 @@ import {
   Star,
   Settings,
   Crown,
-  ChevronDown,
   Moon,
   Sun,
-  User,
-  LogOut,
   LogIn,
   UserPlus,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Switch } from "@/components/ui/switch";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { UpgradePlanDialog } from "@/components/UpgradePlanDialog";
-import { ProfileSettingsDialog } from "@/components/ProfileSettingsDialog";
 import { AutoCareLogo } from "@/components/AutoCareLogo";
-import { avatarUrl } from "@/lib/mock-data";
 import { useTheme } from "@/lib/theme";
 
 const NAV_ITEMS = [
@@ -64,7 +51,6 @@ interface SidebarProps {
 
 export function SidebarContent({ onNavigate }: SidebarProps) {
   const [upgradeOpen, setUpgradeOpen] = useState(false);
-  const [profileOpen, setProfileOpen] = useState(false);
 
   return (
     <div className="flex h-full flex-col bg-sidebar text-sidebar-foreground">
@@ -145,35 +131,6 @@ export function SidebarContent({ onNavigate }: SidebarProps) {
           </button>
           <UpgradePlanDialog open={upgradeOpen} onOpenChange={setUpgradeOpen} />
         </div>
-
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <button className="mt-4 flex w-full items-center gap-2.5 rounded-lg px-1 py-2 text-left transition-colors hover:bg-white/5">
-              <Avatar className="h-9 w-9">
-                <AvatarImage src={avatarUrl("aman-verma")} alt="Aman Verma" />
-                <AvatarFallback>AV</AvatarFallback>
-              </Avatar>
-              <span className="min-w-0 flex-1">
-                <span className="block truncate text-sm font-semibold">Aman Verma</span>
-                <span className="block truncate text-xs text-sidebar-muted">Administrator</span>
-              </span>
-              <ChevronDown className="h-4 w-4 shrink-0 text-sidebar-muted" />
-            </button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent side="top" align="end" className="w-56">
-            <DropdownMenuItem className="gap-2" onSelect={() => setProfileOpen(true)}>
-              <User className="h-4 w-4" />
-              Profile
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem className="gap-2 text-red-600 focus:text-red-600">
-              <LogOut className="h-4 w-4" />
-              Logout
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-
-        <ProfileSettingsDialog open={profileOpen} onOpenChange={setProfileOpen} />
 
         <DarkModeToggle />
       </div>
