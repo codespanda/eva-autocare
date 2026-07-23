@@ -1,4 +1,4 @@
-import { Bell, Calendar, ChevronDown, Menu, Search } from "lucide-react";
+import { Menu, Search } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -9,6 +9,10 @@ import {
 } from "@/components/ui/sheet";
 import { SidebarContent } from "@/components/layout/Sidebar";
 import { VisuallyHidden } from "@/components/ui/visually-hidden";
+import { NotificationsPopover } from "@/components/layout/NotificationsPopover";
+import { DateRangePopover } from "@/components/layout/DateRangePopover";
+import { BranchSelector } from "@/components/layout/BranchSelector";
+import { TopbarUserMenu } from "@/components/layout/TopbarUserMenu";
 
 const TITLES: Record<string, { title: string; crumb: string }> = {
   "/": { title: "Welcome Back, Aman!", crumb: "Dashboard" },
@@ -76,22 +80,10 @@ export function Topbar({ mobileOpen, onMobileOpenChange }: TopbarProps) {
           </div>
         </div>
 
-        <Button variant="outline" size="icon" className="relative shrink-0" aria-label="Notifications">
-          <Bell className="h-[18px] w-[18px]" />
-          <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-primary-foreground">
-            4
-          </span>
-        </Button>
-
-        <Button variant="outline" className="hidden shrink-0 items-center gap-2 sm:flex">
-          <Calendar className="h-4 w-4" />
-          24 May 2025
-        </Button>
-
-        <Button variant="outline" className="hidden shrink-0 items-center gap-1.5 lg:flex">
-          All Branches
-          <ChevronDown className="h-4 w-4" />
-        </Button>
+        <NotificationsPopover />
+        <DateRangePopover />
+        <BranchSelector />
+        <TopbarUserMenu />
       </div>
     </header>
   );

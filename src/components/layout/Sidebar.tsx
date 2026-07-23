@@ -33,6 +33,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { UpgradePlanDialog } from "@/components/UpgradePlanDialog";
+import { ProfileSettingsDialog } from "@/components/ProfileSettingsDialog";
 import { AutoCareLogo } from "@/components/AutoCareLogo";
 import { avatarUrl } from "@/lib/mock-data";
 import { useTheme } from "@/lib/theme";
@@ -63,6 +64,7 @@ interface SidebarProps {
 
 export function SidebarContent({ onNavigate }: SidebarProps) {
   const [upgradeOpen, setUpgradeOpen] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(false);
 
   return (
     <div className="flex h-full flex-col bg-sidebar text-sidebar-foreground">
@@ -159,7 +161,7 @@ export function SidebarContent({ onNavigate }: SidebarProps) {
             </button>
           </DropdownMenuTrigger>
           <DropdownMenuContent side="top" align="end" className="w-56">
-            <DropdownMenuItem className="gap-2">
+            <DropdownMenuItem className="gap-2" onSelect={() => setProfileOpen(true)}>
               <User className="h-4 w-4" />
               Profile
             </DropdownMenuItem>
@@ -170,6 +172,8 @@ export function SidebarContent({ onNavigate }: SidebarProps) {
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
+
+        <ProfileSettingsDialog open={profileOpen} onOpenChange={setProfileOpen} />
 
         <DarkModeToggle />
       </div>

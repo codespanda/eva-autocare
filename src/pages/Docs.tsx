@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import {
   ArrowUp,
   Check,
@@ -11,11 +10,12 @@ import {
   Sun,
   Zap,
 } from "lucide-react";
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { AutoCareLogo } from "@/components/AutoCareLogo";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useTheme } from "@/lib/theme";
+import { cn } from "@/lib/utils";
 
 const LIVE_URL = "https://eva-autocare.codespanda.com/";
 const REPO_URL = "https://github.com/codespanda/eva-autocare";
@@ -113,7 +113,7 @@ export function Docs() {
   return (
     <div id="top" className="min-h-screen bg-background">
       <header className="sticky top-0 z-20 border-b bg-background/95 backdrop-blur">
-        <div className="mx-auto flex max-w-4xl items-center justify-between px-4 py-3 sm:px-6">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
           <a href="#top" className="flex items-center gap-2">
             <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#0b1220]">
               <AutoCareLogo className="h-6 w-6" />
@@ -141,7 +141,10 @@ export function Docs() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-4xl px-4 py-12 sm:px-6 sm:py-16">
+      <main className="mx-auto flex max-w-6xl gap-10 px-4 py-12 sm:px-6 sm:py-16">
+        <DocsToc />
+
+        <div className="min-w-0 flex-1">
         {/* Hero */}
         <section>
           <div className="flex flex-wrap items-center gap-2">
@@ -404,16 +407,78 @@ import { CalendarCheck } from 'lucide-react';
         <div className="mt-16 flex flex-col items-center gap-4 border-t pt-8 text-center">
           <p className="text-sm text-muted-foreground">Eva AutoCare · React + Vite template</p>
           <div className="flex items-center gap-4">
-            <Link to="/showcase" className="text-sm font-medium text-primary hover:underline">
+            <a
+              href="https://codespanda.com/templates/eva-autocare"
+              target="_blank"
+              rel="noreferrer"
+              className="text-sm font-medium text-primary hover:underline"
+            >
               Template overview
-            </Link>
+            </a>
             <a href="#top" className="flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-foreground">
               <ArrowUp className="h-3.5 w-3.5" />
               Back to top
             </a>
           </div>
         </div>
+        </div>
       </main>
     </div>
+  );
+}
+
+const TOC_SECTIONS = [
+  { id: "overview", label: "Overview" },
+  { id: "quick-start", label: "Quick start" },
+  { id: "scripts", label: "Scripts" },
+  { id: "deploy", label: "Deploy to GitHub Pages" },
+  { id: "structure", label: "Project structure" },
+  { id: "routes", label: "Pages & routes" },
+  { id: "components", label: "Using components" },
+  { id: "theming", label: "Theming & dark mode" },
+];
+
+function DocsToc() {
+  const [active, setActive] = useState(TOC_SECTIONS[0].id);
+
+  useEffect(() => {
+    const elements = TOC_SECTIONS.map((s) => document.getElementById(s.id)).filter(
+      (el): el is HTMLElement => !!el
+    );
+    if (elements.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (visible[0]) setActive(visible[0].target.id);
+      },
+      { rootMargin: "-96px 0px -70% 0px", threshold: 0 }
+    );
+
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <aside className="sticky top-24 hidden h-fit w-52 shrink-0 lg:block">
+      <nav className="flex flex-col gap-0.5 border-l">
+        {TOC_SECTIONS.map((s) => (
+          <a
+            key={s.id}
+            href={`#${s.id}`}
+            className={cn(
+              "-ml-px border-l-2 px-4 py-1.5 text-sm transition-colors",
+              active === s.id
+                ? "border-primary font-medium text-primary"
+                : "border-transparent text-muted-foreground hover:text-foreground"
+            )}
+          >
+            {s.label}
+          </a>
+        ))}
+      </nav>
+    </aside>
   );
 }
