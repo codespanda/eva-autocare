@@ -4,7 +4,7 @@ A free, open-source React auto-service admin dashboard — appointments, service
 
 ![Eva AutoCare dashboard](public/og/dashboard.png)
 
-**[Live Preview](https://eva-autocare.codespanda.com/)** · **[Documentation](https://eva-autocare.codespanda.com/#/docs)** · **[Template Showcase](https://eva-autocare.codespanda.com/#/showcase)**
+**[Live Preview](https://eva-autocare.codespanda.com/)** · **[Documentation](https://eva-autocare.codespanda.com/docs)** · **[Template Showcase](https://eva-autocare.codespanda.com/showcase)**
 
 ## What's included
 
@@ -35,7 +35,7 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173). See the full [documentation](https://eva-autocare.codespanda.com/#/docs) for project structure, available routes, and theming.
+Open [http://localhost:5173](http://localhost:5173). See the full [documentation](https://eva-autocare.codespanda.com/docs) for project structure, available routes, and theming.
 
 ## Notes
 

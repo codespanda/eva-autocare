@@ -115,7 +115,9 @@ export function Docs() {
       <header className="sticky top-0 z-20 border-b bg-background/95 backdrop-blur">
         <div className="mx-auto flex max-w-4xl items-center justify-between px-4 py-3 sm:px-6">
           <a href="#top" className="flex items-center gap-2">
-            <AutoCareLogo className="h-8 w-8" />
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#0b1220]">
+              <AutoCareLogo className="h-6 w-6" />
+            </span>
             <span className="text-sm font-bold">
               Eva <span className="text-primary">AutoCare</span>
             </span>
