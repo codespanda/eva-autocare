@@ -122,20 +122,22 @@ export function Reports() {
           <CardHeader>
             <CardTitle>Work Order Status</CardTitle>
           </CardHeader>
-          <CardContent className="flex flex-col items-center gap-4 sm:flex-row sm:items-center sm:justify-center">
+          <CardContent className="flex flex-col items-center gap-4 sm:flex-row sm:items-center sm:justify-center xl:flex-col 2xl:flex-row">
             <DonutChart
               data={workOrderStatusBreakdown}
               centerLabel="Total"
               centerValue="1,256"
             />
-            <div className="flex flex-col gap-2 text-sm">
+            <div className="flex flex-col gap-2.5 text-sm">
               {workOrderStatusBreakdown.map((s) => (
-                <div key={s.name} className="flex items-center gap-2">
-                  <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: s.color }} />
-                  <span className="font-medium">{s.name}</span>
-                  <span className="text-muted-foreground">
-                    {s.value.toLocaleString("en-IN")} ({s.pct}%)
-                  </span>
+                <div key={s.name} className="flex items-start gap-2">
+                  <span className="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full" style={{ backgroundColor: s.color }} />
+                  <p className="min-w-0">
+                    <span className="font-medium">{s.name}</span>{" "}
+                    <span className="whitespace-nowrap text-muted-foreground">
+                      {s.value.toLocaleString("en-IN")} ({s.pct}%)
+                    </span>
+                  </p>
                 </div>
               ))}
             </div>
@@ -149,20 +151,22 @@ export function Reports() {
           <CardHeader>
             <CardTitle>Revenue by Service Type</CardTitle>
           </CardHeader>
-          <CardContent className="flex flex-col items-center gap-4 sm:flex-row sm:items-center sm:justify-center">
+          <CardContent className="flex flex-col items-center gap-4 sm:flex-row sm:items-center sm:justify-center xl:flex-col 2xl:flex-row">
             <DonutChart
               data={revenueByServiceType}
               centerLabel="Total"
               centerValue="₹18,45,600"
             />
-            <div className="flex flex-col gap-2 text-sm">
+            <div className="flex flex-col gap-2.5 text-sm">
               {revenueByServiceType.map((s) => (
-                <div key={s.name} className="flex items-center gap-2">
-                  <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: s.color }} />
-                  <span className="font-medium">{s.name}</span>
-                  <span className="text-muted-foreground">
-                    ₹{s.value.toLocaleString("en-IN")} ({s.pct}%)
-                  </span>
+                <div key={s.name} className="flex items-start gap-2">
+                  <span className="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full" style={{ backgroundColor: s.color }} />
+                  <p className="min-w-0">
+                    <span className="font-medium">{s.name}</span>{" "}
+                    <span className="whitespace-nowrap text-muted-foreground">
+                      ₹{s.value.toLocaleString("en-IN")} ({s.pct}%)
+                    </span>
+                  </p>
                 </div>
               ))}
             </div>

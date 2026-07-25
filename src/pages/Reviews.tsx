@@ -65,14 +65,16 @@ export function Reviews() {
                   centerLabel="Total Reviews"
                   centerValue="256"
                 />
-                <div className="flex flex-col gap-2 text-sm">
+                <div className="flex flex-col gap-2.5 text-sm">
                   {ratingDistribution.map((r) => (
-                    <div key={r.stars} className="flex items-center gap-2">
-                      <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: r.color }} />
-                      <span className="font-medium">{r.stars} Star</span>
-                      <span className="text-muted-foreground">
-                        {r.count} ({r.pct}%)
-                      </span>
+                    <div key={r.stars} className="flex items-start gap-2">
+                      <span className="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full" style={{ backgroundColor: r.color }} />
+                      <p className="min-w-0">
+                        <span className="font-medium">{r.stars} Star</span>{" "}
+                        <span className="whitespace-nowrap text-muted-foreground">
+                          {r.count} ({r.pct}%)
+                        </span>
+                      </p>
                     </div>
                   ))}
                 </div>
