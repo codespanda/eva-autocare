@@ -182,22 +182,27 @@ export function Reports() {
           <CardHeader>
             <CardTitle>Top Performing Technicians</CardTitle>
           </CardHeader>
-          <CardContent className="overflow-x-auto">
-            <table className="w-full min-w-[420px] text-sm">
+          <CardContent>
+            <table className="w-full table-fixed text-sm">
+              <colgroup>
+                <col className="w-auto" />
+                <col className="w-16" />
+                <col className="w-20" />
+                <col className="w-14" />
+              </colgroup>
               <thead>
                 <tr className="text-left text-xs uppercase text-muted-foreground">
-                  <th className="pb-2 font-medium">Technician</th>
-                  <th className="pb-2 font-medium">Work Orders</th>
-                  <th className="pb-2 font-medium">Completed</th>
-                  <th className="pb-2 font-medium">Revenue</th>
+                  <th className="pb-2 pr-1 font-medium">Technician</th>
+                  <th className="pb-2 pr-1 font-medium">Orders</th>
+                  <th className="pb-2 pr-1 font-medium">Revenue</th>
                   <th className="pb-2 font-medium">Rating</th>
                 </tr>
               </thead>
               <tbody>
                 {topPerformingTechnicians.map((t) => (
                   <tr key={t.name} className="border-t">
-                    <td className="py-2.5 pr-2">
-                      <div className="flex items-center gap-2">
+                    <td className="py-2.5 pr-1">
+                      <div className="flex min-w-0 items-center gap-2">
                         <Avatar className="h-7 w-7 shrink-0">
                           <AvatarImage src={avatarUrl(t.avatarSeed)} alt={t.name} />
                           <AvatarFallback>{t.name.slice(0, 2)}</AvatarFallback>
@@ -205,10 +210,13 @@ export function Reports() {
                         <span className="truncate font-medium">{t.name}</span>
                       </div>
                     </td>
-                    <td className="py-2.5 pr-2">{t.workOrders}</td>
-                    <td className="py-2.5 pr-2">{t.completed}</td>
-                    <td className="py-2.5 pr-2 font-medium">₹{t.revenue.toLocaleString("en-IN")}</td>
-                    <td className="py-2.5 font-medium">{t.rating} ★</td>
+                    <td className="py-2.5 pr-1 text-xs">
+                      {t.completed}<span className="text-muted-foreground">/{t.workOrders}</span>
+                    </td>
+                    <td className="py-2.5 pr-1 text-xs font-medium">
+                      ₹{(t.revenue / 1000).toFixed(0)}K
+                    </td>
+                    <td className="py-2.5 text-xs font-medium">{t.rating}★</td>
                   </tr>
                 ))}
               </tbody>
