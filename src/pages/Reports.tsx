@@ -155,7 +155,7 @@ export function Reports() {
             <DonutChart
               data={revenueByServiceType}
               centerLabel="Total"
-              centerValue="₹18,45,600"
+              centerValue="₹18.45 Lakh"
             />
             <div className="flex flex-col gap-2.5 text-sm">
               {revenueByServiceType.map((s) => (
